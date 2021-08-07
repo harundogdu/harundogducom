@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/vendors/@fortawesome/fontawesome-free/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/live-resume.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/vendors/@fortawesome/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/live-resume.css')}}">
     @yield('css')
 </head>
 
@@ -19,7 +19,7 @@
 <div class="content-wrapper">
     <aside>
         <div class="profile-img-wrapper">
-            <img src="assets/images/Profile.png" alt="profile">
+            <img src="{{asset('frontend/assets/images/Profile.png')}}" alt="profile">
         </div>
         <h1 class="profile-name">Daisy Murphy</h1>
         <div class="text-center">
@@ -40,9 +40,8 @@
                 <p>PHONE : +1 123 000 4444</p>
                 <p>MAIL : your@example.com</p>
                 <p>Location : California, USA</p>
-                <button class="btn btn-download-cv btn-primary rounded-pill"><img src="assets/images/download.svg"
-                                                                                  alt="download"
-                                                                                  class="btn-img">DOWNLOAD CV
+                <button class="btn btn-download-cv btn-primary rounded-pill">
+                    <img src="{{asset('frontend/assets/images/download.svg')}}"  alt="download"class="btn-img">DOWNLOAD CV
                 </button>
             </div>
         </div>
@@ -77,11 +76,11 @@
         </footer>
     </main>
 </div>
-<script src="{{{asset('assets/vendors/jquery/dist/jquery.min.js')}}}"></script>
-<script src="{{asset('assets/vendors/@popperjs/core/dist/umd/popper-base.min.js')}}"></script>
-<script src="{{asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/vendors/entry/jq.entry.min.js')}}"></script>
-<script src="{{asset('assets/js/live-resume.js')}}"></script>
+<script src="{{{asset('frontend/assets/vendors/jquery/dist/jquery.min.js')}}}"></script>
+<script src="{{asset('frontend/assets/vendors/@popperjs/core/dist/umd/popper-base.min.js')}}"></script>
+<script src="{{asset('frontend/assets/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('frontend/assets/vendors/entry/jq.entry.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/live-resume.js')}}"></script>
 @yield('js')
 </body>
 

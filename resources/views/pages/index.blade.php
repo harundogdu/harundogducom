@@ -6,19 +6,14 @@
 @endsection
 @section('content')
     <section class="intro-section">
-        <h2 class="section-title">Hello, Daisy Murphy!</h2>
-        <p>I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print
-            media. I enjoy turning complex problems into simple, beautiful and intuitive designs. My job is to
-            build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use.
-            My aim is to bring across your message and identity in the most creative way. I created web design
-            for many famous brand companies.</p>
-        <a href="#!" class="btn btn-primary btn-hire-me">HIRE ME</a>
+        <h2 class="section-title">{{$personal->main_title}}</h2>
+        <p>{!! $personal->subtitle !!}</p>
+        <a href="{{route('contact')}}" class="btn btn-primary btn-hire-me">İletişime Geçin!</a>
     </section>
     <section class="resume-section">
         <div class="row">
             <div class="col-lg-6">
-                <h6 class="section-subtitle">RESUME</h6>
+                <h6 class="section-subtitle">Bilgilerim</h6>
                 <h2 class="section-title">Eğitim</h2>
                 <ul class="time-line">
                     @foreach($educations as $edication)
@@ -33,35 +28,17 @@
                 </ul>
             </div>
             <div class="col-lg-6">
-                <h6 class="section-subtitle">RESUME</h6>
-                <h2 class="section-title">Experience</h2>
+                <h6 class="section-subtitle">Bilgilerim</h6>
+                <h2 class="section-title">Deneyim</h2>
                 <ul class="time-line">
-                    <li class="time-line-item">
-                        <span class="badge badge-primary">2010 - 2014</span>
-                        <h6 class="time-line-item-title">UI/UX Designer</h6>
-                        <p class="time-line-item-subtitle">Web Agency</p>
-                        <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
-                            vitae, interdum sed
-                            tortor.</p>
-                    </li>
-                    <li class="time-line-item">
-                        <span class="badge badge-primary">2008 - 2010</span>
-                        <h6 class="time-line-item-title">Web Designer</h6>
-                        <p class="time-line-item-subtitle">Apple Inc.</p>
-                        <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
-                            vitae, interdum sed
-                            tortor.
-                        </p>
-                    </li>
-                    <li class="time-line-item">
-                        <span class="badge badge-primary">2006 - 2008</span>
-                        <h6 class="time-line-item-title">Graphic Designer</h6>
-                        <p class="time-line-item-subtitle">Apple Inc.</p>
-                        <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
-                            vitae, interdum sed
-                            tortor.
-                        </p>
-                    </li>
+                    @foreach($experiences as $experience)
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">{{$experience->experience_date}}</span>
+                            <h6 class="time-line-item-title">{{$experience->experience_job}}</h6>
+                            <p class="time-line-item-subtitle">{{$experience->experience_company}}</p>
+                            <p class="time-line-item-content">{{$experience->experience_description}}</p>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

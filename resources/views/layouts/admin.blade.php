@@ -70,9 +70,28 @@
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-                    <span class="menu-title">Eğitim</span>
+                    <span class="menu-title">Eğitimler</span>
                 </a>
             </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{route('experience.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Deneyimler</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{route('personal-information')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Kişisel Bilgiler</span>
+                </a>
+            </li>
+
         </ul>
     </nav>
     <!-- partial -->
@@ -165,6 +184,7 @@
 <script src="{{asset('backend/assets/js/dashboard.js')}}"></script>
 <!-- End custom js for this page -->
 <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+@include('sweetalert::alert')
 @yield('js')
 </body>
 </html>

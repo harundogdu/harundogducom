@@ -19,11 +19,11 @@
 <div class="content-wrapper">
     <aside>
         <div class="profile-img-wrapper">
-            <img src="{{asset('frontend/assets/images/Profile.png')}}" alt="profile">
+            <img src="{{asset('storage/'.$personal->image)}}" alt="profile">
         </div>
-        <h1 class="profile-name">Daisy Murphy</h1>
+        <h1 class="profile-name">{{$personal->name}}</h1>
         <div class="text-center">
-            <span class="badge badge-white badge-pill profile-designation">UI / UX Designer</span>
+            <span class="badge badge-white badge-pill profile-designation">{{$personal->job}}</span>
         </div>
         <nav class="social-links">
             <a href="#!" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -33,36 +33,61 @@
             <a href="#!" class="social-link"><i class="fab fa-github"></i></a>
         </nav>
         <div class="widget">
-            <h5 class="widget-title">personal information</h5>
+            <h5 class="widget-title">{{$personal->information_title}}</h5>
             <div class="widget-content">
-                <p>BIRTHDAY : 15 April 1990</p>
-                <p>WEBSITE : www.example.com</p>
-                <p>PHONE : +1 123 000 4444</p>
-                <p>MAIL : your@example.com</p>
-                <p>Location : California, USA</p>
-                <button class="btn btn-download-cv btn-primary rounded-pill">
-                    <img src="{{asset('frontend/assets/images/download.svg')}}"  alt="download"class="btn-img">DOWNLOAD CV
-                </button>
+                <p class="d-flex justify-content-md-between">
+                    <i class="fas fa-birthday-cake text-primary"></i>
+                    <strong>{{$personal->birthday}}</strong>
+                </p>
+                <p class="d-flex justify-content-md-between">
+                    <i class="fas fa-laptop-code text-primary"></i>
+                    <a target="_blank" class="text-dark social-link"
+                       href="{{$personal->website}}"><strong>{{$personal->website}}</strong></a>
+                </p>
+                <p class="d-flex justify-content-md-between">
+                    <i class="fas fa-phone text-primary"></i>
+                    <strong>{{$personal->phone}}</strong>
+                </p>
+                <p class="d-flex justify-content-md-between">
+                    <i class="fas fa-mail-bulk text-primary"></i>
+                    <a target="_blank" class="text-dark social-link"
+                       href="mailto:{{$personal->mail}}"><strong>{{$personal->mail}}</strong></a>
+                </p>
+                <p class="d-flex justify-content-md-between">
+                    <i class="fas fa-home text-primary"></i>
+                    <strong>{{$personal->location}}</strong>
+                </p>
+
+                <a href="{{asset('storage/'.$personal->cv)}}" target="_blank"
+                   class="btn btn-download-cv btn-primary rounded-pill text-white">
+                    <img src="{{asset('frontend/assets/images/download.svg')}}" alt="download" class="btn-img"> Özgeçmiş
+                </a>
+
             </div>
         </div>
         <div class="widget card">
             <div class="card-body">
                 <div class="widget-content">
-                    <h5 class="widget-title card-title">LANGUAGES</h5>
-                    <p>English : native</p>
-                    <p>Spanish : fluent</p>
-                    <p>Italian : fluent</p>
+                    <h5 class="widget-title card-title">Diller</h5>
+                    @php
+                        $specialLanguages = explode(',',$personal->specialLanguages);
+                    @endphp
+                    @foreach( $specialLanguages as  $specialLanguage)
+                        <p>{{$specialLanguage}}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="widget card">
             <div class="card-body">
                 <div class="widget-content">
-                    <h5 class="widget-title card-title">INTERESTS</h5>
-                    <p>Video games</p>
-                    <p>Finance</p>
-                    <p>Basketball</p>
-                    <p>Theatre</p>
+                    <h5 class="widget-title card-title">İlgi Alanlarım</h5>
+                    @php
+                        $interests = explode(',',$personal->interests);
+                    @endphp
+                    @foreach( $interests as  $interest)
+                        <p>{{$interest}}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -71,9 +96,7 @@
 
         @yield('content')
 
-        <footer>Live Resume @ <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer">BootstrapDash</a>.
-            All Rights Reserved 2020
-        </footer>
+        <footer>{{$personal->footer}}</footer>
     </main>
 </div>
 <script src="{{{asset('frontend/assets/vendors/jquery/dist/jquery.min.js')}}}"></script>

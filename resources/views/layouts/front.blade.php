@@ -26,11 +26,9 @@
             <span class="badge badge-white badge-pill profile-designation">{{$personal->job}}</span>
         </div>
         <nav class="social-links">
-            <a href="#!" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#!" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#!" class="social-link"><i class="fab fa-behance"></i></a>
-            <a href="#!" class="social-link"><i class="fab fa-dribbble"></i></a>
-            <a href="#!" class="social-link"><i class="fab fa-github"></i></a>
+            @foreach($socials as $social)
+                <a href="{{$social->href}}" target="_blank" title="{{$social->name}}" class="social-link">{!! $social->icon  !!}</a>
+            @endforeach
         </nav>
         <div class="widget">
             <h5 class="widget-title">{{$personal->information_title}}</h5>
@@ -42,7 +40,7 @@
                 <p class="d-flex justify-content-md-between">
                     <i class="fas fa-laptop-code text-primary"></i>
                     <a target="_blank" class="text-dark social-link"
-                       href="{{$personal->website}}"><strong>{{$personal->website}}</strong></a>
+                       href="{!! $personal->website !!}"><strong>{{explode('//',$personal->website)[1]}}</strong></a>
                 </p>
                 <p class="d-flex justify-content-md-between">
                     <i class="fas fa-phone text-primary"></i>

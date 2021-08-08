@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\PersonalInformationController;
+use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('experience', ExperienceController::class);
     Route::post('experience/change-status', [ExperienceController::class, 'changeStatus'])->name('experience.change-status');
 
-    Route::get('personal-information',[PersonalInformationController::class,'index'])->name('personal-information');
-    Route::post('personal-information/post',[PersonalInformationController::class,'postData'])->name('personal-information-post');
+    Route::get('personal-information', [PersonalInformationController::class, 'index'])->name('personal-information');
+    Route::post('personal-information/post', [PersonalInformationController::class, 'postData'])->name('personal-information-post');
+
+    Route::resource('social-media', SocialMediaController::class);
+    Route::post('social-media/change-status', [SocialMediaController::class, 'changeStatus'])->name('social-media.change-status');
+
 });

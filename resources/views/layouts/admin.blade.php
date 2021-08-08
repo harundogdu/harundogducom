@@ -56,7 +56,7 @@
                 <span class="nav-link">Menüler</span>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('admin')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
@@ -65,7 +65,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/education*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('education.index')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -74,7 +74,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/experience*') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('experience.index')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -83,7 +83,7 @@
                 </a>
             </li>
 
-            <li class="nav-item menu-items">
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/personal-information') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('personal-information')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -91,6 +91,16 @@
                     <span class="menu-title">Kişisel Bilgiler</span>
                 </a>
             </li>
+
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/social-media*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('social-media.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Sosyal Medya</span>
+                </a>
+            </li>
+
 
         </ul>
     </nav>

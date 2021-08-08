@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Education;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class EducationController extends Controller
+class SocialMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,10 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations = Education::all();
-        return view('admin.education_list', compact('educations'));
+        $socials = SocialMedia::orderBy('order', 'ASC')
+            ->orderBy('name', 'ASC')
+            ->get();
+        return view('admin.social-media_list', compact('socials'));
     }
 
     /**
@@ -27,7 +30,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        return view('admin.education_add');
+        return view('admin.social-media_add');
     }
 
     /**
@@ -38,18 +41,10 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        $education = Education::create([
-            'school_name' => $request->school_name,
-            'school_tag' => $request->school_tag,
-            'school_date' => $request->school_date,
-            'status' => $request->status,
-            'school_description' => $request->school_description,
-        ]);
-
-        Alert::success('İşlem Başarılı!', 'Eğitim bilgileriniz başarıyla eklendi!');
-        return redirect()->route('education.index');
+        SocialMedia::create($request->all());
+        Alert::success('İşlem Başarılı', 'Sosyal Medya Başarıyla Kayıt Edildi!');
+        return redirect()->route('social-media.index');
     }
-
 
     /**
      * Display the specified resource.
@@ -70,8 +65,8 @@ class EducationController extends Controller
      */
     public function edit($id)
     {
-        $education = Education::whereId($id)->first();
-        return view('admin.education_edit', compact('education'));
+        $social = SocialMedia::find($id);
+        return view('admin.social-media_edit', compact('social'));
     }
 
     /**
@@ -83,12 +78,11 @@ class EducationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $social = SocialMedia::find($id);
+        $social->update($request->all());
 
-        $education = Education::whereId($id)->first();
-        $education->update($request->all());
-
-        Alert::success('İşlem Başarılı!', 'Eğitim bilgileriniz başarıyla güncellendi!');
-        return redirect()->route('education.index');
+        Alert::success('İşlem Başarılı!', 'Sosyal Medya Başarıyla Güncellendi!');
+        return redirect()->route('social-media.index');
     }
 
     /**
@@ -99,22 +93,18 @@ class EducationController extends Controller
      */
     public function destroy($id)
     {
-        $education = Education::whereId($id)->first();
-        $education->delete();
-
-        return redirect()->route('education.index');
+        //
     }
-
 
     public function changeStatus(Request $request)
     {
-        $education = Education::where('id', $request->id)->first();
-        $education->status = !$education->status;
+        $social = SocialMedia::where('id', $request->id)->first();
+        $social->status = !$social->status;
 
-        if ($education->save()) {
+        if ($social->save()) {
             return response()->json([
                 'success' => true,
-                'status' => $education->status
+                'status' => $social->status
             ], 200);
         }
         return response()->json([

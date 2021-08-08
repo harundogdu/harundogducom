@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Experience;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ExperienceController extends Controller
 {
@@ -16,7 +17,7 @@ class ExperienceController extends Controller
     public function index()
     {
         $experiences = Experience::all();
-        return view('admin.experience_list',compact('experiences'));
+        return view('admin.experience_list', compact('experiences'));
     }
 
     /**
@@ -32,7 +33,7 @@ class ExperienceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,14 +46,14 @@ class ExperienceController extends Controller
             'experience_description' => $request->experience_description,
         ]);
 
-        alert()->success('İşlem Başarılı!', 'Deneyim bilgileriniz başarıyla eklendi!');
+        Alert::success('İşlem Başarılı!', 'Deneyim bilgileriniz başarıyla eklendi!');
         return redirect()->route('experience.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,20 +64,20 @@ class ExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $experience = Experience::whereId($id)->first();
-        return view('admin.experience_edit',compact('experience'));
+        return view('admin.experience_edit', compact('experience'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,14 +85,14 @@ class ExperienceController extends Controller
         $experience = Experience::whereId($id)->first();
         $experience->update($request->all());
 
-        alert()->success('İşlem Başarılı!', 'Deneyim bilgileriniz başarıyla güncellendi!');
+        Alert::success('İşlem Başarılı!', 'Deneyim bilgileriniz başarıyla güncellendi!');
         return redirect()->route('experience.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

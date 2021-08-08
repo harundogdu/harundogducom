@@ -5,15 +5,15 @@
         Paylaş
     </button>
     <nav class="collapsible-nav" id="collapsible-nav">
-        <a href="{{route('index')}}" class="nav-link {{\Illuminate\Support\Facades\Request::is('/') ? 'active' : ''}}">HOME</a>
+        <a href="{{route('index')}}" class="nav-link {{\Illuminate\Support\Facades\Request::is('/') ? 'active' : ''}}">Anasayfa</a>
         <a href="{{route('resume')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('resume') ? 'active' : ''}}">RESUME</a>
+           class="nav-link {{\Illuminate\Support\Facades\Request::is('resume') ? 'active' : ''}}">Özetle</a>
         <a href="{{route('portfolio')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('portfolio') ? 'active' : ''}}">PORTFOLIO</a>
+           class="nav-link {{\Illuminate\Support\Facades\Request::is('portfolio') ? 'active' : ''}}">Portfolyo</a>
         <a href="{{route('blog')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('blog') ? 'active' : ''}}">BLOG</a>
+           class="nav-link {{\Illuminate\Support\Facades\Request::is('blog') ? 'active' : ''}}">Blog</a>
         <a href="{{route('contact')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('contact') ? 'active' : ''}}">CONTACT</a>
+           class="nav-link {{\Illuminate\Support\Facades\Request::is('contact') ? 'active' : ''}}">İletişim</a>
     </nav>
     <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
             data-target="collapsible-nav"><img src="{{asset('frontend/assets/images/hamburger.svg')}}" alt="hamburger"></button>

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Education;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index(){
-        return view('pages.index');
+        $educations = Education::where('status','1')->get();
+        return view('pages.index',compact('educations'));
     }
     public function resume(){
         return view('pages.resume');

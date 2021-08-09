@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\PersonalInformationController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\FrontController;
@@ -50,4 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::resource('clients',ClientController::class);
     Route::post('clients/change-status', [ClientController::class, 'changeStatus'])->name('clients.change-status');
+
+    Route::resource('portfolio',PortfolioController::class);
+    Route::post('portfolio/change-status', [PortfolioController::class, 'changeStatus'])->name('portfolio.change-status');
 });

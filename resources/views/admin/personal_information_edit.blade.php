@@ -253,6 +253,19 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="geo_location">Lokasyon*</label>
+                            <textarea placeholder="Lokasyon" class="form-control" name="geo_location"
+                                      id="geo_location"
+                                      rows="4">{{$personalInformation->geo_location}}</textarea>
+                            <small class="text-muted">Google Maps Iframe etiketi 'src' adresini yazın</small>
+                            @if ($errors->has('geo_location'))
+                                <span class="error">
+                                    <strong>{{ $errors->first('geo_location') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                             <label for="footer">Altyazı*</label>
                             <textarea placeholder="Ana Ekran Açıklama" class="form-control" name="footer"
                                       id="footer"

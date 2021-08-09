@@ -11508,6 +11508,20 @@ main .portfolio-wrapper .portfolio-item {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+main .portfolio-wrapper .portfolio-item::after {
+    content: attr(data-tag);
+    position: absolute;
+    max-width: 100%;
+    height: 25px;
+    background-color: #0067f6;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    padding: 0px 12px;
 }
 
 @media (max-width: 1500px) {
@@ -11541,19 +11555,19 @@ main .portfolio-wrapper .portfolio-item-img {
 
 main .portfolio-wrapper .portfolio-item-details {
     padding: 22px 26px;
-    background-color: rgba(0, 0, 0, 0.42);
+    background-color: rgba(0, 0, 0, 0.82);
     color: #ffffff;
 }
 
 main .portfolio-wrapper .portfolio-item-title {
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 5px;
 }
 
 main .portfolio-wrapper .portfolio-item-description {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1;
     margin-bottom: 0;
 }

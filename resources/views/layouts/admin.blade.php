@@ -119,6 +119,15 @@
                 </a>
             </li>
 
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/portfolio*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('portfolio.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Portfolyo</span>
+                </a>
+            </li>
+
 
         </ul>
     </nav>

@@ -126,7 +126,17 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id) ?? abort(404, 'Böyle Bir Sayfa Bulunamadı!');
+
+        try {
+            if (file_exists(public_path('storage/' . $client->image))) {
+                unlink(public_path('storage/' . $client->image));
+            }
+        } catch (\Exception $exception) {
+            return $exception;
+        }
+
         $client->delete();
+
         Alert::success('İşlem Başarılı!', 'Başarıyla Silindi!');
         return redirect()->route('clients.index');
     }

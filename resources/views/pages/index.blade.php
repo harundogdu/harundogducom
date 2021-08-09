@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <h6 class="section-subtitle">Bilgilerim</h6>
-                <h2 class="section-title">Eğitim</h2>
+                <h2 class="section-title">Eğitim Bilgilerim</h2>
                 <ul class="time-line">
                     @foreach($educations as $edication)
                         <li class="time-line-item">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-lg-6">
                 <h6 class="section-subtitle">Bilgilerim</h6>
-                <h2 class="section-title">Deneyim</h2>
+                <h2 class="section-title">İş Deneyimlerim</h2>
                 <ul class="time-line">
                     @foreach($experiences as $experience)
                         <li class="time-line-item">

@@ -163,15 +163,15 @@ main {
         }
 
         .service-title {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: bold;
             line-height: 1;
             margin-bottom: 8px;
         }
 
         .service-description {
-            font-size: 10px;
-            font-weight: $font-weight-light;
+            font-size: 14px;
+            font-weight: $font-weight-bold;
             max-width: 180px;
             margin-bottom: 0;
         }
@@ -518,11 +518,11 @@ main {
                 @media (max-width: 991px) {
                     width: 100%;
                 }
-        
+
                 @media (max-width: 767px) {
                     width: calc(50% - 12.5px);
                 }
-        
+
                 @media (max-width: 575px) {
                     width: 100%;
                 }

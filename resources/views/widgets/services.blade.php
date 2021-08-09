@@ -1,54 +1,15 @@
-
 <section class="services-section">
-    <h6 class="section-subtitle">WHAT I DO</h6>
-    <h2 class="section-title">SERVICES</h2>
+    <h6 class="section-subtitle">Ne Yapıyorum?</h6>
+    <h2 class="section-title">Hizmetlerim</h2>
     <div class="row">
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{{asset('frontend/assets/images/001-target.svg')}}" alt="target">
+        @foreach($services as $service)
+            <div class="media service-card col-lg-6 d-flex justify-content-between align-items-center">
+                <div class="service-icon text-primary">{!! $service->icon !!}</div>
+                <div class="media-body">
+                    <h5 class="service-title text-primary">{{$service->title}}</h5>
+                    <p class="service-description">{{$service->subtitle}}</p>
+                </div>
             </div>
-            <div class="media-body">
-                <h5 class="service-title">web designing</h5>
-                <p class="service-description">Mauris magna sapien, pharetra consectetur fringilla vitae,
-                    interdum sed
-                    tortor.</p>
-            </div>
-        </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{{asset('frontend/assets/images/003-idea.svg')}}" alt="bulb">
-            </div>
-            <div class="media-body">
-                <h5 class="service-title">Graphic design</h5>
-                <p class="service-description">Mauris magna sapien, pharetra consectetur fringilla vitae,
-                    interdum sed
-                    tortor.
-                </p>
-            </div>
-        </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{{asset('frontend/assets/images/002-development.svg')}}" alt="development">
-            </div>
-            <div class="media-body">
-                <h5 class="service-title">Development</h5>
-                <p class="service-description">Mauris magna sapien, pharetra consectetur fringilla vitae,
-                    interdum sed
-                    tortor.
-                </p>
-            </div>
-        </div>
-        <div class="media service-card col-lg-6">
-            <div class="service-icon">
-                <img src="{{asset('frontend/assets/images/004-smartphone.svg')}}" alt="smartphone">
-            </div>
-            <div class="media-body">
-                <h5 class="service-title">Mobile design</h5>
-                <p class="service-description">Mauris magna sapien, pharetra consectetur fringilla vitae,
-                    interdum sed
-                    tortor.
-                </p>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>

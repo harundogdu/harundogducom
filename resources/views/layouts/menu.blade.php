@@ -6,12 +6,8 @@
     </button>
     <nav class="collapsible-nav" id="collapsible-nav">
         <a href="{{route('index')}}" class="nav-link {{\Illuminate\Support\Facades\Request::is('/') ? 'active' : ''}}">Anasayfa</a>
-        <a href="{{route('resume')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('resume') ? 'active' : ''}}">Özetle</a>
         <a href="{{route('portfolio')}}"
            class="nav-link {{\Illuminate\Support\Facades\Request::is('portfolio') ? 'active' : ''}}">Portfolyo</a>
-        <a href="{{route('blog')}}"
-           class="nav-link {{\Illuminate\Support\Facades\Request::is('blog') ? 'active' : ''}}">Blog</a>
         <a href="{{route('contact')}}"
            class="nav-link {{\Illuminate\Support\Facades\Request::is('contact') ? 'active' : ''}}">İletişim</a>
     </nav>

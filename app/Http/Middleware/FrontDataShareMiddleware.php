@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\PersonalInformation;
+use App\Models\Services;
 use App\Models\SocialMedia;
 use Closure;
 use Illuminate\Http\Request;
@@ -24,8 +25,13 @@ class FrontDataShareMiddleware
             ->orderBy('name', 'ASC')
             ->get();
         $personal = PersonalInformation::find(1);
+        $services = Services::whereStatus(1)
+            ->orderBy('order', 'ASC')
+            ->orderBy('title', 'ASC')
+            ->get();
         View::share('personal', $personal);
         View::share('socials', $socials);
+        View::share('services', $services);
         return $next($request);
     }
 }

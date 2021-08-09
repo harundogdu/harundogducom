@@ -44,6 +44,8 @@
         </div>
     </section>
     @include('widgets.services')
+    @include('widgets.achievements')
+    @include('widgets.clients')
 @endsection
 @section('js')
 @endsection

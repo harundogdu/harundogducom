@@ -101,6 +101,24 @@
                 </a>
             </li>
 
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/services*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('services.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Servisler</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/clients*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('clients.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Araçlar</span>
+                </a>
+            </li>
+
 
         </ul>
     </nav>

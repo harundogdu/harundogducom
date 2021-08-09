@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\PersonalInformationController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('front.data.share')->group(function () {
     Route::get('/', [FrontController::class, 'index'])->name('index');
-    Route::get('/resume', [FrontController::class, 'resume'])->name('resume');
     Route::get('/portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
-    Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 });
 
@@ -45,4 +45,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('social-media', SocialMediaController::class);
     Route::post('social-media/change-status', [SocialMediaController::class, 'changeStatus'])->name('social-media.change-status');
 
+    Route::resource('services',ServicesController::class);
+    Route::post('services/change-status', [ServicesController::class, 'changeStatus'])->name('services.change-status');
+
+    Route::resource('clients',ClientController::class);
+    Route::post('clients/change-status', [ClientController::class, 'changeStatus'])->name('clients.change-status');
 });

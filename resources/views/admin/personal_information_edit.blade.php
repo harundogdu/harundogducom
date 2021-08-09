@@ -217,6 +217,42 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="completed_project">Tamamlanan Proje Sayısı*</label>
+                            <input type="text" class="form-control" id="completed_project" name="completed_project"
+                                   placeholder="Tamamlanan Proje Sayısı" value="{{$personalInformation->completed_project}}">
+                            <small class="text-muted">1 - 999</small>
+                            @if ($errors->has('completed_project'))
+                                <span class="error">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="happy_clients">Mutlu Müşteri*</label>
+                            <input type="text" class="form-control" id="happy_clients" name="happy_clients"
+                                   placeholder="Mutlu Müşteri Sayısı" value="{{$personalInformation->happy_clients}}">
+                            <small class="text-muted">1 - 999</small>
+                            @if ($errors->has('location'))
+                                <span class="error">
+                                    <strong>{{ $errors->first('happy_clients') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="awards_recieved">Aldığım Sertifikalar*</label>
+                            <input type="text" class="form-control" id="awards_recieved" name="awards_recieved"
+                                   placeholder="Aldığım Sertifikalar" value="{{$personalInformation->awards_recieved}}">
+                            <small class="text-muted">1 - 999</small>
+                            @if ($errors->has('awards_recieved'))
+                                <span class="error">
+                                    <strong>{{ $errors->first('awards_recieved') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                             <label for="footer">Altyazı*</label>
                             <textarea placeholder="Ana Ekran Açıklama" class="form-control" name="footer"
                                       id="footer"

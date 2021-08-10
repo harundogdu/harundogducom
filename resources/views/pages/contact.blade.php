@@ -20,7 +20,8 @@
             </div>
         </div>
 
-        <form action="#!" class="contact-form">
+        <form id="formSendMail" action="" method="POST" class="contact-form">
+            @csrf
             <div class="form-group form-group-name">
                 <label for="name" class="sr-only">Ad Soyad</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Ad Soyad">
@@ -33,7 +34,9 @@
                 <label for="message" class="sr-only">Mesaj</label>
                 <textarea name="message" id="message" class="form-control" placeholder="Mesaj" rows="5"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary form-submit-btn">Mesaj Gönder</button>
+            <button type="button" data-original-text="Mesaj Gönder" id="contactSendMail"
+                    class="btn btn-primary form-self-btn">Mesaj Gönder
+            </button>
         </form>
 
     </section>
@@ -48,4 +51,95 @@
     </section>
 @endsection
 @section('js')
+    <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#contactSendMail').click(function () {
+                var self = $(this);
+                const form = $('#formSendMail');
+                const name = $('#name').val().trim();
+                const email = $('#email').val().trim();
+                const message = $('#message').val().trim();
+                const url = '{{route('contact.send-mail')}}';
+
+                function isEmail(email) {
+                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    return regex.test(email);
+                }
+
+                if (name === "" || email === "" || message === "") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata!',
+                        text: 'Lütfen Boş Alan Bırakmayınız!',
+                        showConfirmText: 'Tamam'
+                    });
+                } else if (!isEmail(email)) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata!',
+                        text: 'Lütfen Geçerli Bir EMail adresi Giriniz!',
+                        showConfirmText: 'Tamam'
+                    });
+                } else {
+
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax(url, {
+                        type: 'POST',
+                        data: {
+                            name: name,
+                            email: email,
+                            message: message
+                        },
+                        beforeSend: function () {
+                            self.attr("disabled", "disabled");
+                            var loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center mr-2"></span>Gönderiliyor.....';
+                            if (self.html() !== loadingText) {
+                                self.data('original', self.html());
+                                self.html(loadingText);
+                            }
+                        },
+                        async: true,
+                        success: function (response) {
+                            setTimeout(function () {
+                                form.trigger('reset');
+                                self.html(self.data('original'));
+                                self.removeAttr("disabled", "disabled");
+
+                            }, 1000);
+                            if (response.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Başarılı!',
+                                    text: response.message,
+                                    showConfirmText: 'Tamam'
+                                });
+
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Hata!',
+                                    text: response.message,
+                                    showConfirmText: 'Tamam'
+                                });
+                            }
+
+                        },
+                        error: function (response) {
+                            alert(response.message)
+                        }
+                    })
+                }
+
+
+            })
+
+        })
+    </script>
 @endsection

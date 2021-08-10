@@ -11637,8 +11637,8 @@ main .contact-section {
 }
 
 main .contact-section p {
-    font-size: 12px;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 main .contact-cards-wrapper {
@@ -11726,7 +11726,7 @@ main .contact-form .form-control {
     background-color: #f3f3f3;
     padding: 12px 14px;
     color: #000000;
-    font-size: 8px;
+    font-size: 16px;
     line-height: 1.5;
     min-height: 36px;
 }

@@ -157,16 +157,20 @@
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                              aria-labelledby="profileDropdown">
 
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-logout text-danger"></i>
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="dropdown-item preview-item">
+                                    <div class="preview-thumbnail">
+                                        <div class="preview-icon bg-dark rounded-circle">
+                                            <i class="mdi mdi-logout text-danger"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Çıkış Yap</p>
-                                </div>
-                            </a>
+                                    <div class="preview-item-content">
+                                        <p class="preview-subject mb-1">Çıkış Yap</p>
+                                    </div>
+                                </button>
+                            </form>
                             <div class="dropdown-divider"></div>
 
                         </div>

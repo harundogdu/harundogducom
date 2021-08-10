@@ -26,6 +26,7 @@ Route::middleware('front.data.share')->group(function () {
     Route::get('/', [FrontController::class, 'index'])->name('index');
     Route::get('/portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+    Route::post('/contact/send-mail', [FrontController::class, 'sendMail'])->name('contact.send-mail');
 });
 
 
@@ -46,12 +47,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('social-media', SocialMediaController::class);
     Route::post('social-media/change-status', [SocialMediaController::class, 'changeStatus'])->name('social-media.change-status');
 
-    Route::resource('services',ServicesController::class);
+    Route::resource('services', ServicesController::class);
     Route::post('services/change-status', [ServicesController::class, 'changeStatus'])->name('services.change-status');
 
-    Route::resource('clients',ClientController::class);
+    Route::resource('clients', ClientController::class);
     Route::post('clients/change-status', [ClientController::class, 'changeStatus'])->name('clients.change-status');
 
-    Route::resource('portfolio',PortfolioController::class);
+    Route::resource('portfolio', PortfolioController::class);
     Route::post('portfolio/change-status', [PortfolioController::class, 'changeStatus'])->name('portfolio.change-status');
 });

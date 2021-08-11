@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\GeneralSettingsController;
 use App\Http\Controllers\Admin\PersonalInformationController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ServicesController;
@@ -55,4 +56,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::resource('portfolio', PortfolioController::class);
     Route::post('portfolio/change-status', [PortfolioController::class, 'changeStatus'])->name('portfolio.change-status');
+
+    Route::get('general-settings', [GeneralSettingsController::class, 'index'])->name('general-settings');
+    Route::post('general-settings/post', [GeneralSettingsController::class, 'postData'])->name('general-settings-post');
 });

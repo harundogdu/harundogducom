@@ -1,5 +1,5 @@
 <section class="achievements-section">
-    <h6 class="section-subtitle">Ne Yapıyorum?</h6>
+    <h6 class="section-subtitle text-{{$general->themeColor}}">Ne Yapıyorum?</h6>
     <h2 class="section-title">Başarılarım</h2>
     <div class="achievement-cards-wrapper">
         <div class="media achievement-card">

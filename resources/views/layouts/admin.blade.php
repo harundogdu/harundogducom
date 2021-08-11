@@ -128,6 +128,15 @@
                 </a>
             </li>
 
+            <li class="nav-item menu-items {{\Illuminate\Support\Facades\Request::is('admin/general-settings*') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('general-settings')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Genel Site Ayarları</span>
+                </a>
+            </li>
+
 
         </ul>
     </nav>

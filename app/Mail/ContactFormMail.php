@@ -16,13 +16,15 @@ class ContactFormMail extends Mailable
      *
      * @return void
      */
-    public $name = 'as';
-    public $message = 'a';
+    public $name = '';
+    public $message = '';
+    public $email = '';
 
-    public function __construct($name = 'İsim', $message = 'Mesaj')
+    public function __construct($name = 'İsim', $message = 'Mesaj', $email = 'info@harundogdu.com')
     {
         $this->name = $name;
         $this->message = $message;
+        $this->email = $email;
     }
 
     /**
@@ -34,6 +36,7 @@ class ContactFormMail extends Mailable
     {
         $name = $this->name;
         $message = $this->message;
-        return $this->markdown('emails.contact_form', compact('message', 'name'));
+        $email = $this->email;
+        return $this->markdown('emails.contact_form', compact('message', 'name', 'email'));
     }
 }

@@ -2,6 +2,8 @@
 
 <strong>Mesajı Gönderen :</strong> {{$name}}
 
+<strong>Gönderici Email :</strong> {{$email}}
+
 <strong>Gönderim Zamanı :</strong> {{Carbon\Carbon::parse(now())->format('d.m.Y H:i:s')}}
 
 <strong>Gelen Mesaj :</strong>

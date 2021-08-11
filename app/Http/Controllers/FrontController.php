@@ -39,11 +39,11 @@ class FrontController extends Controller
 
     public function sendMail(Request $request)
     {
-//        $email = $request->email;
+        $emailSend = $request->email;
         $email = \env('MAIL_FROM_ADDRESS');
         $name = $request->name;
         $message = strip_tags($request->message);
-        $mail = new ContactFormMail($name, $message);
+        $mail = new ContactFormMail($name, $message,$emailSend);
         try {
             Mail::to($email)->send($mail);
             return response()->json([

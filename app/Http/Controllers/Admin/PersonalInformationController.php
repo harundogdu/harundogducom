@@ -66,8 +66,6 @@ class PersonalInformationController extends Controller
         $personalInformation->completed_project = $request->completed_project;
         $personalInformation->happy_clients = $request->happy_clients;
         $personalInformation->awards_recieved = $request->awards_recieved;
-        $personalInformation->geo_location = $request->geo_location;
-        $personalInformation->footer = $request->footer;
 
         $personalInformation->save();
 

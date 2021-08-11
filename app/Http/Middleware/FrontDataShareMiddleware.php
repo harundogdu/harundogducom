@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\GeneralSettings;
 use App\Models\PersonalInformation;
 use App\Models\Services;
 use App\Models\SocialMedia;
@@ -25,11 +26,13 @@ class FrontDataShareMiddleware
             ->orderBy('name', 'ASC')
             ->get();
         $personal = PersonalInformation::find(1);
+        $general = GeneralSettings::find(1);
         $services = Services::whereStatus(1)
             ->orderBy('order', 'ASC')
             ->orderBy('title', 'ASC')
             ->get();
         View::share('personal', $personal);
+        View::share('general', $general);
         View::share('socials', $socials);
         View::share('services', $services);
         return $next($request);

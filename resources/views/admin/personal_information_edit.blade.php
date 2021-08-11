@@ -252,32 +252,6 @@
                             @endif
                         </div>
 
-                        <div class="form-group">
-                            <label for="geo_location">Lokasyon*</label>
-                            <textarea placeholder="Lokasyon" class="form-control" name="geo_location"
-                                      id="geo_location"
-                                      rows="4">{{$personalInformation->geo_location}}</textarea>
-                            <small class="text-muted">Google Maps Iframe etiketi 'src' adresini yazın</small>
-                            @if ($errors->has('geo_location'))
-                                <span class="error">
-                                    <strong>{{ $errors->first('geo_location') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <label for="footer">Altyazı*</label>
-                            <textarea placeholder="Ana Ekran Açıklama" class="form-control" name="footer"
-                                      id="footer"
-                                      rows="4">{{$personalInformation->footer}}</textarea>
-                            <small class="text-muted">Tüm hakları saklıdır © Harun Doğdu</small>
-                            @if ($errors->has('footer'))
-                                <span class="error">
-                                    <strong>{{ $errors->first('footer') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
                         <small class="text-danger">* Zorunlu alan</small>
                         <button type="button" id="personalInformationEditButton" class="btn btn-info mr-2 btn-block">
                             Güncelle

@@ -6,13 +6,13 @@
 @endsection
 @section('content')
     <section class="portfolio-section">
-        <h2 class="section-title text-{{$general->themeColor}}">Portfolyo</h2>
+        <h2 class="section-title text-{{$shareData["general"]->themeColor}}">Portfolyo</h2>
         <div class="portfolio-wrapper">
             @foreach($portfolios as $portfolio)
-                <figure class="portfolio-item portfolio-item-{{$general->themeColor}} hover-box gulum"
+                <figure class="portfolio-item portfolio-item-{{$shareData["general"]->themeColor}} hover-box gulum"
                         data-tag="{{$portfolio->featuredTag}}">
                     <a href="{!! $portfolio->href !!}" target="_blank">
-                        <img src="{{asset('storage/'.$portfolio->image)}}"
+                        <img style="background-size: cover !important;" width="300" height="119" src="{{asset('storage/'.$portfolio->image)}}"
                              alt="{{$portfolio->title}}"
                              class="portfolio-item-img">
                     </a>

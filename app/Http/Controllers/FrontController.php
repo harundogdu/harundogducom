@@ -7,20 +7,20 @@ use App\Mail\SendContactMail;
 use App\Models\Client;
 use App\Models\Education;
 use App\Models\Experience;
-use App\Models\PersonalInformation;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
-use Illuminate\Support\Env;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        $clients = Client::where('status', 1)->orderBy('order', 'ASC')->get();
-        $educations = Education::where('status', '1')->get();
-        $experiences = Experience::where('status', '1')->get();
-        return view('pages.index', compact('educations', 'experiences', 'clients'));
+        $data = [];
+        $data['clients'] = Client::query()->where('status', 1)->orderBy('order', 'ASC')->get();
+        $data['educations'] = Education::query()->where('status', '1')->get();
+        $data['experiences'] = Experience::query()->where('status', '1')->get();
+        return view('pages.index', compact('data'));
     }
 
     public function portfolio()
@@ -43,7 +43,7 @@ class FrontController extends Controller
         $email = \env('MAIL_FROM_ADDRESS');
         $name = $request->name;
         $message = strip_tags($request->message);
-        $mail = new ContactFormMail($name, $message,$emailSend);
+        $mail = new ContactFormMail($name, $message, $emailSend);
         try {
             Mail::to($email)->send($mail);
             return response()->json([

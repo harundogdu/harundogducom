@@ -12,6 +12,7 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "predis/predis": "^1.1",
         "rap2hpoutre/laravel-log-viewer": "^1.7",
         "realrashid/sweet-alert": "^4.0"
     },

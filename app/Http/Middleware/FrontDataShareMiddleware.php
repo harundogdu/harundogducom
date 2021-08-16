@@ -8,6 +8,7 @@ use App\Models\Services;
 use App\Models\SocialMedia;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class FrontDataShareMiddleware
@@ -21,20 +22,19 @@ class FrontDataShareMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $socials = SocialMedia::whereStatus(1)
-            ->orderBy('order', 'ASC')
-            ->orderBy('name', 'ASC')
+        $shareData = [];
+        $shareData['socials'] = DB::table('social_media')
+            ->where('status', '=', 1)
+            ->orderBy('order', 'asc')
+            ->orderBy('name', 'asc')
             ->get();
-        $personal = PersonalInformation::find(1);
-        $general = GeneralSettings::find(1);
-        $services = Services::whereStatus(1)
+        $shareData['personal'] = PersonalInformation::find(1);
+        $shareData['general'] = GeneralSettings::find(1);
+        $shareData['services'] = Services::whereStatus(1)
             ->orderBy('order', 'ASC')
             ->orderBy('title', 'ASC')
             ->get();
-        View::share('personal', $personal);
-        View::share('general', $general);
-        View::share('socials', $socials);
-        View::share('services', $services);
+        View::share('shareData', $shareData);
         return $next($request);
     }
 }

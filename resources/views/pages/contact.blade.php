@@ -6,17 +6,17 @@
 @endsection
 @section('content')
     <section class="contact-section">
-        <h2 class="section-title text-{{$general->themeColor}}">İletişime Geç</h2>
+        <h2 class="section-title text-{{$shareData["general"]->themeColor}}">İletişime Geç</h2>
         <p class="mb-4">Bir proje, iş veya başka bir şey hakkında konuşmak isterseniz, iletişime geçin.</p>
 
         <div class="contact-cards-wrapper">
             <div class="contact-card">
                 <h6 class="contact-card-title">Beni Arayın!</h6>
-                <p class="contact-card-content">{{$personal->phone}}</p>
+                <p class="contact-card-content">{{$shareData["personal"]->phone}}</p>
             </div>
             <div class="contact-card">
                 <h6 class="contact-card-title">Mail Gönderin!</h6>
-                <p class="contact-card-content">{{$personal->mail}}</p>
+                <p class="contact-card-content">{{$shareData["personal"]->mail}}</p>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                 <textarea name="message" id="message" class="form-control" placeholder="Mesaj" rows="5"></textarea>
             </div>
             <button type="button" data-original-text="Mesaj Gönder" id="contactSendMail"
-                    class="btn btn-{{$general->themeColor}} form-self-btn">Mesaj Gönder
+                    class="btn btn-{{$shareData["general"]->themeColor}} form-self-btn">Mesaj Gönder
             </button>
         </form>
 
@@ -45,7 +45,7 @@
 
         <div class="map-wrapper embed-responsive embed-responsive-16by9">
             <iframe
-                src="{{$general->location}}"
+                src="{{$shareData["general"]->location}}"
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
